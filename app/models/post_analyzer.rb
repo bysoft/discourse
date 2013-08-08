@@ -81,10 +81,12 @@ class PostAnalyzer
 
   # Returns an array of all links in a post excluding mentions
   def raw_links
+
     return [] unless @raw.present?
 
     return @raw_links if @raw_links.present?
 
+    puts cooked_document.to_html
     # Don't include @mentions in the link count
     @raw_links = []
     cooked_document.search("a[href]").each do |l|
